@@ -11,18 +11,17 @@ if __name__ == "__main__":
     else:
         a = int(argument[1])
         b = int(argument[3])
+        operator = argument[2]
 
-        if argument[2] != ('+' or '-' or '*' or '/'):
+        if operator not in ['+', '-', '*', '/']:
             print("Unknown operator. Available operator: +, -, * and /")
             sys.exit(1)
 
-        else:
-            for i in range(1, len(argument)):
-                if argument[i] == '+':
-                    print("{} {} {} = {}".format(a, argument[2], b, add(a, b)))
-                elif argument[i] == '-':
-                    print("{} {} {} = {}".format(a, argument[2], b, sub(a, b)))
-                elif argument[i] == '*':
-                    print("{} {} {} = {}".format(a, argument[2], b, mul(a, b)))
-                elif argument[i] == '/':
-                    print("{} {} {} = {}".format(a, argument[2], b, div(a, b)))
+        if operator == '+':
+            print("{} + {} = {}".format(a, b, add(a, b)))
+        elif operator == '-':
+            print("{} - {} = {}".format(a, b, sub(a, b)))
+        elif operator == '*':
+            print("{} * {} = {}".format(a, b, mul(a, b)))
+        elif operator == '/':
+            print("{} / {} = {}".format(a, b, div(a, b)))
