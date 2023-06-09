@@ -17,4 +17,4 @@ def uppercase(str):
 
         new_str += new_letter
 
-    print(new_str)
+    print("{}".format(new_str))
