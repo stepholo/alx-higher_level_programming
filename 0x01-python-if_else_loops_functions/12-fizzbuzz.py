@@ -1,4 +1,3 @@
-#/usr/bin/python3
 def fizzbuzz():
     ''' Iterates trough a range of 100
 
