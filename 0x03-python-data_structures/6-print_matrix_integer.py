@@ -11,5 +11,8 @@ def print_matrix_integer(matrix=[[]]):
     """
     for row in matrix:
         for j in row:
-            print("{:d}".format(j), end=" ")
+            if j == row[-1]:
+                print("{:d}".format(j), end=" ")
+            else:
+                print("{:d}".format(j), end=" ")
         print()
