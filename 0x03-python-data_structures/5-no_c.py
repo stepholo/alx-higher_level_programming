@@ -4,7 +4,7 @@ def no_c(my_string):
     A function that removes 'c' from my_string
 
     Parameter:
-      - my_string - the string to check 
+      - my_string - the string to check
 
     Return:
       - The string without the letter 'c'
