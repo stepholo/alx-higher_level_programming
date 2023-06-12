@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 def print_list_integer(my_list=[]):
     """
     A function that prints content of a list
@@ -9,5 +10,5 @@ def print_list_integer(my_list=[]):
       - Prints content of the my_list assuming they are all integers
 
     """
-    for i in my_list:
-        print("{:d}".format(i))
+    for i in range(len(my_list)):
+        print("{:d}".format(my_list[i]), end="\n")
