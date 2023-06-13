@@ -10,8 +10,11 @@ def max_integer(my_list=[]):
     Return:
         The maximum integer  of my_list
     """
-    ma_x = my_list[0]
-    for i in my_list:
-        if ma_x < i:
-            ma_x = i
-    return ma_x
+    if len(my_list) < 1:
+        return
+    else:
+        ma_x = my_list[0]
+        for i in my_list:
+            if ma_x < i:
+                ma_x = i
+        return ma_x
