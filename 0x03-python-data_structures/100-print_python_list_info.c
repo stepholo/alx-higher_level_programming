@@ -1,14 +1,11 @@
 #include <Python.h>
-#include <stdio.h>
 #include <object.h>
 #include <listobject.h>
 
 /**
-* print_python_list_info - Function that print some basic info
-* about Python lists
-* @p: object Pointer
-* Return: void
-*/
+ * print_python_list_info - Prints some info about python list
+ * @p: pointer to the object
+ */
 void print_python_list_info(PyObject *p)
 {
 	Py_ssize_t size, allocated, i;
@@ -23,7 +20,6 @@ void print_python_list_info(PyObject *p)
 	for (i = 0; i < size; i++)
 	{
 		item = PyList_GetItem(p, i);
-		print("Element %ld: %s\n", i, Py_TYPE(item)->tp_name);
+		printf("Element %ld: %s\n", i, Py_TYPE(item)->tp_name);
 	}
 }
-
