@@ -6,7 +6,7 @@ def common_elements(set_1, set_2):
       - set_1: The first set
       - set_2: The second set
 
-    Return: 
+    Return:
        - a set of common elements in set_1 and set_2
     """
     return set_1 & set_2
