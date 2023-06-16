@@ -14,12 +14,13 @@ def roman_to_int(roman_sting):
     dict_n = {'I': 1, 'V': 5, 'X': 10, 'L': 50, 'C': 100, 'D': 500, 'M': 1000}
     keys = list(dict_n)
 
-    roman = roman_sting
-    if type(roman) is not str:
+    string = roman_sting
+    if type(string) is not str:
         return 0
-    elif roman is None:
+    elif string is None:
         return 0
     else:
+        roman = string.upper()
         digit = []
 
         for letter in roman:
