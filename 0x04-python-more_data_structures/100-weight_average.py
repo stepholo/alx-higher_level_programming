@@ -14,9 +14,12 @@ def weight_average(my_list=[]):
     weight_1 = []
 
     for i in my_list:
-        a, b = i
-        weight_1.append(b)
-        score_1.append(a * b)
+        if i is None:
+            return 0
+        else:
+            a, b = i
+            weight_1.append(b)
+            score_1.append(a * b)
 
     total_s = 0
     for i in score_1:
