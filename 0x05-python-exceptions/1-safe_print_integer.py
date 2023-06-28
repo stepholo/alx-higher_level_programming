@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 def safe_print_integer(value):
     """ A function tha prints integer
     Parameter:
