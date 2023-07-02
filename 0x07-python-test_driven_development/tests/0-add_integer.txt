@@ -1,0 +1,110 @@
+`Using add_integer function`
+----------------------------
+
+Importing function from module:
+	  >>> add_integer = __import__('0-add_integer').add_integer
+
+Integer Addition:
+	>>> add_integer(1, 2)
+	3
+
+	>>> add_integer(100, -2)
+	98
+
+	>>> add_integer(-2)
+	96
+
+	>>> add_integer(2)
+	100
+
+Float Additon:
+	>>> add_integer(100.3, -2)
+	98
+
+	>>> add_integer(-2.3)
+	96
+
+Addition using a string:
+	 >>> add_integer(4, "School")
+	 Traceback (most recent call last):
+	 	   ...
+	 TypeError: b must be an integer
+
+	 >>> add_integer('1', '1')
+	 Traceback (most recent call last):
+	 	   ...
+	 TypeError: a must be an integer
+
+	 >>> add_integer(None)
+	 Traceback (most recent call last):
+	 	   ...
+	 TypeError: a must be an integer
+
+Complex number addition:
+	>>> add_integer(5j, 1)
+	Traceback (most recent call last):
+		...
+	TypeError: a must be an integer
+
+	>>> add_integer(1, 5j)
+	Traceback (most recent call last):
+	        ...
+	TypeError: b must be an integer
+
+Addition using data structure:
+	 >>> add_integer({})
+	 Traceback (most recent call last):
+	 	   ...
+	 TypeError: a must be an integer
+
+	 >>> add_integer(2, ())
+	 Traceback (most recent call last):
+	 	...
+	 TypeError: b must be an integer
+
+	 >>> add_integer(2, [])
+	 Traceback (most recent call last):
+	 	   ...
+	 TypeError: b must be an integer
+
+	 >>> add_integer(float(int), 0)
+	 Traceback (most recent call last):
+	 	...
+	 TypeError: float() argument must be a string or a number, not 'type'
+
+Overflow cases:
+	 >>> add_integer(float('inf'), 0)
+	 Traceback (most recent call last):
+	 	   ...
+	 OverflowError: cannot convert float infinity to integer
+
+	 >>> add_integer(float('-inf'), float('inf'))
+	 Traceback (most recent call last):
+	 	   ...
+	 OverflowError: cannot convert float infinity to integer
+
+	 >>> add_integer(1e1000, 1)
+	 Traceback (most recent call last):
+	          ...
+	 OverflowError: cannot convert float infinity to integer
+
+	 >>> add_integer(1, 1e100) #doctest: +ELLIPSIS
+	 1000...
+
+
+
+A case of undefined variable:
+	>>> add_integer(0, float(NaN))
+	Traceback (most recent call last):
+		 ...
+	NameError: name 'NaN' is not defined
+
+	>>> add_integer(float(NaN))
+	Traceback (most recent call last):
+		...
+	NameError: name 'NaN' is not defined
+
+	>>> add_integer(H, 10)
+	Traceback (most recent call last):
+		...
+	NameError: name 'H' is not defined
