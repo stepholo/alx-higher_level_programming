@@ -96,3 +96,11 @@ Cases when matrix is not a list of list:
 	Traceback (most recent call last):
 		...
 	TypeError: matrix must be a matrix (list of list) of integers/floats
+
+	>>> matrix = [[float('inf'), 2, 3], [3, 4, 2]]
+	>>> print(matrix_divided(matrix, 3))
+	[[inf, 0.67, 1.0], [1.0, 1.33, 0.67]]
+
+	>>> matrix = [[float('-inf'), 2, 3], [2, 4, 3]]
+	>>> print(matrix_divided(matrix, 3))
+	[[-inf, 0.67, 1.0], [0.67, 1.33, 1.0]]
