@@ -71,5 +71,8 @@ class Rectangle:
             return rect
         else:
             for i in range(self.__height):
-                rect += f"{'#' * self.__width}\n"
+                if i < self.__height - 1:
+                    rect += f"{'#' * self.__width}\n"
+                else:
+                    rect += f"{'#' * self.__width}"
             return rect
