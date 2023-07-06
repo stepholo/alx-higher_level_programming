@@ -1,0 +1,79 @@
+Test cases
+
+Import module:
+	>>> print_square = __import__('4-print_square').print_square
+
+A case with integers:
+	>>> print_square(4)
+	####
+	####
+	####
+	####
+
+	>>> print_square(10)
+	##########
+	##########
+	##########
+	##########
+	##########
+	##########
+	##########
+	##########
+	##########
+	##########
+
+	>>> print_square(0)
+	>>> print_square(1)
+	#
+
+>>> try:
+...     print_square(-1)
+... except Exception as e:
+...     print(e)
+...
+size must be >= 0
+
+>>> print_square(-1)
+Traceback (most recent call last):
+	...
+ValueError: size must be >= 0
+
+>>> print_square(2.4)
+Traceback (most recent call last):
+	...
+TypeError: size must be an integer
+
+>>> print_square(-2.4)
+Traceback (most recent call last):
+	...
+TypeError: size must be an integer
+
+>>> print_square('h')
+Traceback (most recent call last):
+	...
+TypeError: size must be an integer
+
+>>> print_square('hello')
+Traceback (most recent call last):
+	...
+TypeError: size must be an integer
+
+>>> print_square(5j)
+Traceback (most recent call last):
+	...
+TypeError: size must be an integer
+
+>>> print_square(float('inf'))
+Traceback (most recent call last):
+	...
+TypeError: size must be an integer
+
+>>> print_square()
+Traceback (most recent call last):
+	...
+TypeError: print_square() missing 1 required positional argument: 'size'
+
+>>> print_square([1, 2, 3, 4])
+Traceback (most recent call last):
+	...
+TypeError: size must be an integer
