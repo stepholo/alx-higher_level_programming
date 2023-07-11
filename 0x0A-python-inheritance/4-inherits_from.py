@@ -1,4 +1,13 @@
 #!/usr/bin/python3
+"""
+
+
+Module to define inherits _from function
+
+
+"""
+
+
 def inherits_from(obj, a_class):
     """using issubclass to check for inheritance
     Arg:

@@ -1,4 +1,12 @@
 #!/usr/bin/python3
+"""
+
+Module to define is_same_class function
+
+
+"""
+
+
 def is_same_class(obj, a_class):
     """checks for the instance of the object obj in a_class
 

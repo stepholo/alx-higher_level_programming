@@ -1,4 +1,13 @@
 #!/usr/bin/python3
+"""
+
+
+Module to define is_kind_of_class
+
+
+"""
+
+
 def is_kind_of_class(obj, a_class):
     """checks the instance of an object in a class
 
