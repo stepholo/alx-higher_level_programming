@@ -10,6 +10,10 @@ max_integer = __import__('6-max_integer').max_integer
 class TestMaxInteger(unittest.TestCase):
     """A class that defines the test cases for a function"""
 
+    def test_emptylist(self):
+        """Method to test for an empty list"""
+        self.assertEqual(max_integer([]), None)
+
     def test_space(self):
         """Method to test for lack of comma or extra spaces
            in the list
