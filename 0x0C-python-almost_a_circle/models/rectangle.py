@@ -90,3 +90,15 @@ class Rectangle(Base):
             raise ValueError('y must be >= 0')
         else:
             self.__y = value
+
+    def area(self):
+        """method that returns area of rectangle"""
+        return self.__width * self.__height
+
+    def display(self):
+        """method that prints represantation of the rectangle using #"""
+        for i in range(self.__height):
+            if i < self.__height - 1:
+                print("{}".format('#' * self.__width))
+            else:
+                print("{}".format('#' * self.__width), end='\n')
