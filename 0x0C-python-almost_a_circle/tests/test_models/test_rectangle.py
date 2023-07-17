@@ -75,6 +75,12 @@ class TestValidateAttribute(unittest.TestCase):
             rect.display()
             actual_output = stdout.getvalue()
         self.assertEqual(actual_output, expected_output)
+        rect = Rectangle(2, 3, 2, 2)
+        expect = '\n\n  ##\n  ##\n  ##\n'
+        with mock.patch('sys.stdout', new=StringIO()) as stdout:
+            rect.display()
+            actual = stdout.getvalue()
+        self.assertEqual(actual, expect)
         with self.assertRaises(ValueError):
             rect = Rectangle(-2, 3)
             rect.display()
@@ -102,6 +108,34 @@ class TestValidateAttribute(unittest.TestCase):
             print(rect)
         with self.assertRaises(TypeError):
             rect = Rectangle(2, 's', 1, '0')
+            print(rect)
+
+    def test_update(self):
+        """method to test the update function of the class rectangle"""
+        rect = Rectangle(10, 10, 10, 10)
+        expected = '[Rectangle] (89) 4/5 - 2/3\n'
+        with mock.patch('sys.stdout', new=StringIO()) as stdout:
+            rect.update(89, 2, 3, 4, 5)
+            print(rect)
+            actual = stdout.getvalue()
+        self.assertEqual(expected, actual)
+        expected = '[Rectangle] (89) 1/3 - 4/2\n'
+        with mock.patch('sys.stdout', new=StringIO()) as stdout:
+            rect.update(x=1, height=2, y=3, width=4, id=89)
+            print(rect)
+            actual = stdout.getvalue()
+        self.assertEqual(expected, actual)
+        with self.assertRaises(ValueError):
+            rect.update(3, -1, 4, 9)
+            print(rect)
+        with self.assertRaises(TypeError):
+            rect.update(5, '1', '4', 9)
+            print(rect)
+        with self.assertRaises(ValueError):
+            rect.update(x=-1, height=2, y=-3, width=4)
+            print(rect)
+        with self.assertRaises(TypeError):
+            rect.update(x=1, height=[2], y=3, width='4')
             print(rect)
 
 
