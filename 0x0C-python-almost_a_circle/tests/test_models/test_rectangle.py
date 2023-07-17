@@ -82,6 +82,28 @@ class TestValidateAttribute(unittest.TestCase):
             rect = Rectangle(2, 'list')
             rect.display()
 
+    def test_str(self):
+        """method to test string representation"""
+        rect = Rectangle(2, 3, 2, 1, 12)
+        expect = '[Rectangle] (12) 2/1 - 2/3\n'
+        with mock.patch('sys.stdout', new=StringIO()) as stdout:
+            print(rect)
+            actual = stdout.getvalue()
+        self.assertEqual(expect, actual)
+        rect = Rectangle(5, 5, 1)
+        no = rect.id
+        expect1 = f'[Rectangle] ({no}) 1/0 - 5/5\n'
+        with mock.patch('sys.stdout', new=StringIO()) as stdout:
+            print(rect)
+            actual1 = stdout.getvalue()
+        self.assertEqual(expect1, actual1)
+        with self.assertRaises(ValueError):
+            rect = Rectangle(-2, 3, -1, 0)
+            print(rect)
+        with self.assertRaises(TypeError):
+            rect = Rectangle(2, 's', 1, '0')
+            print(rect)
+
 
 if __name__ == '__main__':
     unittest.main()
