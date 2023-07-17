@@ -97,12 +97,34 @@ class Rectangle(Base):
 
     def display(self):
         """method that prints represantation of the rectangle using #"""
+        x = self.__x
+        w = self.__width
+        for i in range(self.__y):
+            print()
         for i in range(self.__height):
             if i < self.__height - 1:
-                print("{}".format('#' * self.__width))
+                print("{}{}".format(' ' * x, '#' * w))
             else:
-                print("{}".format('#' * self.__width), end='\n')
+                print("{}{}".format(' ' * x, '#' * w), end='\n')
 
     def __str__(self):
         """method that returns string representation of the rectangle"""
-        return f"[Rectangle] ({self.id}) {self.__x}/{self.__y} - {self.__width}/{self.__height}"
+        x = self.__x
+        y = self.__y
+        h = self.__height
+        w = self.__width
+        return f"[Rectangle] ({self.id}) {x}/{y} - {w}/{h}"
+
+    def update(self, *args, **kwargs):
+        """method that assigns an argument to each attribute
+        args:
+            *args: Pointer to the list of non-keyword argument
+            **kwargs: Pointer to the key-worded argument
+        """
+        if args:
+            attributes = ['id', 'width', 'height', 'x', 'y']
+            for i, arg in enumerate(args):
+                setattr(self, attributes[i], arg)
+        elif kwargs:
+            for key, value in kwargs.items():
+                setattr(self, key, value)
