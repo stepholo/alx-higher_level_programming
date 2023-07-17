@@ -138,6 +138,30 @@ class TestValidateAttribute(unittest.TestCase):
             rect.update(x=1, height=[2], y=3, width='4')
             print(rect)
 
+    def test_dictionary(self):
+        """method to test dictionary representation"""
+        rect = Rectangle(10, 2, 1, 9)
+        expected = "{'id': 4, 'width': 10, 'height': 2, 'x': 1, 'y': 9}\n"
+        with mock.patch('sys.stdout', new=StringIO()) as stdout:
+            rect_1 = rect.to_dictionary()
+            print(rect_1)
+            actual = stdout.getvalue()
+        self.assertEqual(expected, actual)
+        rect2 = Rectangle(1, 2)
+        rect2.update(**rect_1)
+        expected = '[Rectangle] (4) 1/9 - 10/2\n'
+        with mock.patch('sys.stdout', new=StringIO()) as stdout:
+            print(rect2)
+            actual = stdout.getvalue()
+        self.assertEqual(expected, actual)
+        self.assertFalse(rect == rect2)
+        with self.assertRaises(ValueError):
+            dicti = {'x': 1, 'y': 9, 'id': 1, 'height': 2, 'width': -10}
+            rect.update(**dicti)
+        with self.assertRaises(TypeError):
+            dicti = {'x': 1, 'y': [9], 'id': 1, 'height': 2, 'width': 10}
+            rect.update(**dicti)
+
 
 if __name__ == '__main__':
     unittest.main()
