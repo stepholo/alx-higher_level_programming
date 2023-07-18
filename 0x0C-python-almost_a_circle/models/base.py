@@ -4,6 +4,7 @@
 
 
 import json
+import os
 
 
 class Base:
@@ -56,8 +57,11 @@ class Base:
     def save_to_file(cls, list_objs):
         """Class method the saves json string into a file"""
         filename = cls.__name__ + '.json'
-        new_list = [obj.to_dictionary() for obj in list_objs]
-        json_str = cls.to_json_string(new_list)
+        if list_objs is None:
+            json_str = '[]'
+        else:
+            new_list = [obj.to_dictionary() for obj in list_objs]
+            json_str = cls.to_json_string(new_list)
         with open(filename, 'w') as f:
             f.write(json_str)
 
@@ -66,7 +70,8 @@ class Base:
         """class method that returns an instance with all attibutes
         already set
         """
-        dummy = cls(**dictionary)
+        dummy = cls(1, 2)
+        dummy.update(**dictionary)
         return dummy
 
     @classmethod
@@ -74,12 +79,13 @@ class Base:
         """method that returns a list of instances"""
         obj_list = []
         filename = cls.__name__ + '.json'
-        with open(filename, 'r') as f:
-            char = f.read()
-        if char:
-            instance = cls.from_json_string(char)
-            for obj in instance:
-                obj_list.append(cls.create(**obj))
-            return obj_list
+        if os.path.exists(filename):
+            with open(filename, 'r') as f:
+                char = f.read()
+            if char:
+                instance = cls.from_json_string(char)
+                for obj in instance:
+                    obj_list.append(cls.create(**obj))
+                    return obj_list
         else:
             return obj_list
