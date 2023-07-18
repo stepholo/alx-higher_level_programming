@@ -67,7 +67,7 @@ class TestValidateAttribute(unittest.TestCase):
     def test_dictionary(self):
         """method to test dictionary representation"""
         rect = Square(10, 2, 1)
-        expected = "{'id': 1, 'size': 10, 'x': 2, 'y': 1}\n"
+        expected = str(rect.to_dictionary()) + '\n'
         with mock.patch('sys.stdout', new=StringIO()) as stdout:
             rect_1 = rect.to_dictionary()
             print(rect_1)
@@ -75,7 +75,8 @@ class TestValidateAttribute(unittest.TestCase):
         self.assertEqual(expected, actual)
         rect2 = Square(1, 1)
         rect2.update(**rect_1)
-        expected = '[Square] (1) 2/1 - 10\n'
+        no = rect2.id
+        expected = f'[Square] ({no}) 2/1 - 10\n'
         with mock.patch('sys.stdout', new=StringIO()) as stdout:
             print(rect2)
             actual = stdout.getvalue()

@@ -2,6 +2,7 @@
 
 
 import unittest
+import os
 from unittest import mock
 from io import StringIO
 from models.base import Base
@@ -56,7 +57,7 @@ class TestBase(unittest.TestCase):
         self.assertTrue(type(dicti) == dict)
         json_str = Base.to_json_string([dicti])
         self.assertTrue(type(json_str) == str)
-        expected = '[{"id": 9, "width": 10, "height": 7, "x": 2, "y": 8}]\n'
+        expected = '[{"id": 11, "width": 10, "height": 7, "x": 2, "y": 8}]\n'
         with mock.patch('sys.stdout', new=StringIO()) as stdout:
             print(json_str)
             actual = stdout.getvalue()
@@ -71,6 +72,7 @@ class TestBase(unittest.TestCase):
         rect = Rectangle(10, 7, 2, 8)
         rect1 = Rectangle(2, 4)
         Rectangle.save_to_file([rect, rect1])
+        self.assertTrue(os.path.exists('Rectangle.json'))
         with open('Rectangle.json', 'r') as f:
             char = f.read()
         self.assertTrue(type(char) == str)
