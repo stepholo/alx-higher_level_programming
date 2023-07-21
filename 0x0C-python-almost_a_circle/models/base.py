@@ -4,6 +4,7 @@
 
 
 import json
+import csv
 import os
 
 
@@ -87,5 +88,34 @@ class Base:
                 for obj in instance:
                     obj_list.append(cls.create(**obj))
                     return obj_list
+        else:
+            return obj_list
+
+    @classmethod
+    def save_to_file_csv(cls, list_objs):
+        """class method that saves the attributes of an instance in csv"""
+        filename = cls.__name__ + '.csv'
+        if list_objs is None:
+            csv_dicti = []
+            with open(filename, 'w', newline='') as csvfile:
+                writer = csv.writer(csvfile)
+                writer.writerow(csv_dicti)
+        else:
+            with open(filename, 'w', newline='') as csvfile:
+                writer = csv.writer(csvfile)
+                for obj in list_objs:
+                    writer.writerow(obj.to_csv_row())
+
+    @classmethod
+    def load_from_file_csv(cls):
+        """class method that loads from a csv file"""
+        obj_list = []
+        filename = cls.__name__+'.csv'
+        if os.path.exists(filename):
+            with open(filename, 'r') as csv_file:
+                char = csv.reader(csv_file)
+                for obj in char:
+                    obj_list.append(cls.create_from_csv_row(obj))
+                return obj_list
         else:
             return obj_list
