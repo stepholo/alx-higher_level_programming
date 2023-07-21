@@ -30,6 +30,16 @@ class Square(Rectangle):
         self.width = value
         self.height = value
 
+    def to_csv_row(self):
+        """method that creates attributes to csv rows"""
+        return [self.id, self.size, self.x, self.y]
+
+    @classmethod
+    def create_from_csv_row(cls, row):
+        """method that create attributes from csv file"""
+        id, size, x, y = map(int, row)
+        return cls(id, size, x, y)
+
     def update(self, *args, **kwargs):
         """method to assign attributes to key and no key worded
         argument
