@@ -91,6 +91,16 @@ class Rectangle(Base):
         else:
             self.__y = value
 
+    def to_csv_row(self):
+        """method that gets an instance attribute values into a list"""
+        return [self.id, self.width, self.height, self.x, self.y]
+
+    @classmethod
+    def create_from_csv_row(cls, row):
+        """method that creates from csv list"""
+        id, width, height, x, y = map(int, row)
+        return cls(id, width, height, x, y)
+
     def area(self):
         """method that returns area of rectangle"""
         return self.__width * self.__height
