@@ -5,11 +5,15 @@
 Defines an BaseGeometry
 
 
-"""l
+"""
 
 
 class BaseGeometry:
-    """defines a class"""
+    """defines BaseGeometry class
+
+    Attributes:
+       area: method that raises an exception
+    """
 
     def area(self):
         """method to raise error message"""
