@@ -1,0 +1,4 @@
+-- Script to list all databases on MySQL
+-- Use SHOW command
+SHOW DATABASES;
+
