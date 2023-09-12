@@ -8,5 +8,5 @@ if (!isNaN(a) && typeof a === 'number' && !isNaN(b) && typeof b === 'number') {
   }
   add(a, b);
 } else {
-  console.log('Nan');
+  console.log('NaN');
 }
