@@ -8,6 +8,10 @@ from sys import argv
 
 
 def states():
+    """Function to list all states from the database hbtn_0e_0_usa
+        takes argument
+    """
+
     mysql_username = argv[1]
     mysql_password = argv[2]
     database_name = argv[3]
