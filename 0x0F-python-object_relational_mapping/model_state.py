@@ -10,6 +10,7 @@ from sqlalchemy import Column, Integer, String
 
 Base = declarative_base()
 
+
 class State(Base):
     """Class state inherits from Base
         links to the MySQL tables states
