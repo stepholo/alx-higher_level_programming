@@ -25,7 +25,7 @@ def list_state():
     session = Session()
 
     for instance in session.query(State).order_by(State.id):
-        print(f'{instance.id}, {instance.name}')
+        print(f'{instance.id}: {instance.name}')
 
 
 if __name__ == '__main__':
