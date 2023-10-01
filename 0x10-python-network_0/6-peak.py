@@ -19,12 +19,11 @@ def find_peak(list_of_integers):
 
     for i in range(len(list_of_integers) - 1):
         k = list_of_integers[i]
-        l = list_of_integers[i - 1]
+        j = list_of_integers[i - 1]
         m = list_of_integers[i + 1]
-        if k >= l and k >= m:
+        if k >= j and k >= m:
             new_list.append(k)
 
     if not new_list:
         return max(list_of_integers)
-    
     return find_peak(new_list)
