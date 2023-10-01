@@ -22,6 +22,6 @@ if __name__ == "__main__":
         for commit in r_json[:10]:
             sha = commit['sha']
             auth_name = commit['commit']['author']['name']
-            print(f"{sha} {auth_name}")
+            print(f"{sha}: {auth_name}")
     else:
         print('No commits found')
